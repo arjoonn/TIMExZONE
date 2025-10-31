@@ -1,0 +1,146 @@
+.order-container{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 60px;
+  gap: 40px;
+  width: 90%;
+  max-width: 900px;
+  margin: 70px auto;
+  background: #fff;
+}
+
+.order-products{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 20px;
+  gap: 10px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.order-item{
+  display: grid;
+  grid-template-columns: 80px auto;
+  border: 0.2px solid #eee;
+  padding: 13px;
+  gap: 70px;
+}
+
+.order-info{
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  gap: 5px;
+}
+
+.order-img{
+  width: 150px;
+  height: 150px;
+  object-fit: contain;
+  border-radius: 12px;
+}
+
+.order-title{
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.order-price,
+.order-qty {
+  color: #333;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.order-value{
+  color:  #1aa33f;
+  font-weight: 600;
+}
+
+.order-summary{
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center;
+  width: 100%;
+}
+
+.order-total{
+  font-size: 1.2rem;
+  font-weight: 800;
+}
+
+.order-address {
+  width: 100%;
+  min-height: 80px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 10px;
+  resize: vertical;
+  font-size: 0.95rem;
+  transition: border 0.2s ease;
+}
+
+.order-actions {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.order-btn {
+  background: #1aa33f;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 25px;
+  font-size: 1rem;
+  cursor: pointer;
+  width: 100%;
+}
+
+@media (max-width: 600px) {
+  .order-container {
+    padding: 20px;
+    margin: 30px auto;
+    gap: 25px;
+  }
+
+  .order-item {
+    grid-template-columns: 60px auto; /* smaller image area */
+    gap: 40px;
+    padding: 10px;
+  }
+
+  .order-img {
+    width: 100px;
+    height: 100px;
+  }
+
+  .order-title {
+    font-size: 0.9rem;
+  }
+
+  .order-price,
+  .order-qty {
+    font-size: 0.9rem;
+  }
+
+  .order-summary {
+    gap: 12px;
+  }
+
+  .order-total {
+    font-size: 1rem;
+  }
+
+  .order-address {
+    min-height: 70px;
+    font-size: 0.9rem;
+  }
+
+  .order-btn {
+    font-size: 0.95rem;
+    padding: 10px;
+  }
+}

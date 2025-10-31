@@ -1,0 +1,107 @@
+.homeWrapper{
+  padding-top: 60px;
+}
+
+.authContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 56px);
+    padding: 1rem;
+    background: #d9d5ce;
+}
+
+.authForm{
+    background: #eeece8;
+    padding: 2rem;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+}
+
+.alertContiner {
+  position: fixed;
+  top: 80px;              /* just below navbar */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2000;
+  min-width: 220px;
+  max-width: 280px;
+}
+
+.alertContiner .alert {
+  padding: 6px 12px;
+  font-size: 0.85rem;
+  margin: 0;
+  border-radius: 6px;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+.loginBtn {
+  display: block;
+  margin: 30px auto 0;   /* centers horizontally */
+  width: 100%;          /* fixed width, adjust as needed */
+  font-weight: 600;
+  padding: 6px 0;
+  border: none;
+  border-radius: 0;
+  background: #8289a3;      /* grey by default */
+  color: #fff;
+  transition: all 0.3s ease;
+  cursor: not-allowed;   /* disabled look */
+}
+
+.loginBtn.active {
+  background: #0f2134;   /* blue when active */
+  cursor: pointer;
+}
+
+.loginBtn:hover.active {
+  background: #0f2134;   /* darker blue on hover */
+}
+
+@media (max-width: 768px) {
+  .authContainer {
+    padding: 0.5rem;
+    height: auto;              /* let content expand naturally */
+    min-height: calc(100vh - 56px);
+  }
+
+  .authForm {
+    padding: 1.5rem;
+    max-width: 90%;           
+    border-radius: 10px;
+  }
+
+  .loginBtn {
+    width: 150px;               
+    margin-top: 16px;
+    padding: 10px 0;
+    font-size: 1rem;
+  }
+
+  .alertContiner {
+    top: 70px;                 
+    min-width: 180px;
+    max-width: 240px;
+  }
+
+  .alertContiner .alert {
+    font-size: 0.8rem;
+    padding: 6px 10px;
+  }
+
+  .alertContainer {
+    top: 10px;
+    right: 10px;
+    min-width: 180px;
+    max-width: 250px;
+  }
+
+  .alertContainer .alert {
+    font-size: 13px;
+    padding: 6px 10px;
+  }
+}

@@ -1,0 +1,279 @@
+.homeWrapper {
+  min-height: calc(100vh - 80px); 
+}
+
+.mainCartContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.alertContainer {
+  margin-bottom: 20px;
+}
+
+.empty-cart {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f8f9fa;
+  text-align: center;
+  color: #6c757d;
+  min-height: calc(100vh - 80px);
+}
+
+.empty-cart h5 {
+  font-size: 6rem;
+  font-weight: bold;
+  opacity: 0.3;  
+}
+
+.cartContainer {
+  display: grid;
+  grid-template-columns: 1fr 350px;
+  gap: 30px;
+  align-items: start;
+  min-height: 60vh;
+}
+
+/* Left Side - Cart Items */
+.leftcartContaiiner {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  min-height: 400px;
+}
+
+.cartItem {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 15px;
+  padding: 20px;
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  align-items: start;
+  position: relative; /* Added for positioning remove button */
+}
+
+.cartItem input[type="checkbox"] {
+  margin-top: 10px;
+  transform: scale(1.2);
+  accent-color: #007bff;
+}
+
+.cartHead {
+  display: flex;
+  gap: 15px;
+  align-items: flex-start;
+  margin-bottom: 15px;
+  width: 100%;
+}
+
+.cartImg {
+  flex-shrink: 0;
+}
+
+.cartImg img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+}
+
+.rmCartBtn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+.titleItem {
+  grid-column: 2;
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 15px;
+  line-height: 1.4;
+  padding-right: 40px; /* Space for remove button */
+}
+
+.cartInfo {
+  grid-column: 2;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  padding-right: 40px; /* Space for remove button */
+}
+
+.cartPrice {
+  font-size: 20px;
+  font-weight: 700;
+  color: #2c5aa0;
+}
+
+/* Dropdown Styles */
+.dropdown-toggle {
+  background-color: #6c757d !important;
+  border: none !important;
+  border-radius: 6px !important;
+  padding: 6px 12px !important;
+  font-size: 14px !important;
+}
+
+.dropdown-menu {
+  border-radius: 8px !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+  border: 1px solid #e0e0e0 !important;
+}
+
+.dropdown-item {
+  padding: 8px 16px !important;
+  transition: all 0.2s ease !important;
+}
+
+.dropdown-item:hover {
+  background-color: #007bff !important;
+  color: white !important;
+}
+
+/* Right Side - Selected Items Summary */
+.rightSideCard {
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  position: sticky;
+  top: 20px;
+  height: fit-content;
+}
+
+.rightSideCard h2 {
+  margin: 0 0 20px 0;
+  font-size: 22px;
+  font-weight: 600;
+  color: #333;
+  text-align: center;
+  padding-bottom: 15px;
+  border-bottom: 2px solid #f0f0f0;
+}
+
+.rightSideCard > p {
+  text-align: center;
+  color: #6c757d;
+  font-style: italic;
+  margin: 20px 0;
+}
+
+.selected-items-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.cardTotal {
+  padding: 15px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  border-left: 4px solid #007bff;
+}
+
+.titleRigt {
+  font-weight: 600;
+  color: #333;
+  margin: 0 0 8px 0;
+  font-size: 15px;
+  line-height: 1.3;
+}
+
+.item-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.totalQnty {
+  color: #666;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.totalPrice {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 2px solid #e0e0e0;
+  text-align: center;
+}
+
+.totalPrice p {
+  font-size: 20px;
+  font-weight: 700;
+  color: #2c5aa0;
+  margin: 0 0 15px 0;
+}
+
+.totalPrice button {
+  width: 100%;
+  background-color: #28a745; /* green */
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 0;
+  font-size: 16px;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.totalPrice button:hover {
+  background-color: #218838; /* darker green on hover */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .cartContainer {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .rightSideCard {
+    position: static;
+  }
+  
+  .cartItem {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  
+  .cartItem input[type="checkbox"] {
+    grid-column: 1;
+    justify-self: start;
+  }
+  
+  .titleItem,
+  .cartInfo {
+    grid-column: 1;
+    padding-right: 0;
+  }
+  
+  .cartHead {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .cartInfo {
+    flex-direction: row;
+    justify-content: center;
+    gap: 15px;
+  }
+  
+ .rmCartBtn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+  }
+}

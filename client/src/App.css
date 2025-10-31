@@ -1,0 +1,19 @@
+  .homeWrapper {
+    padding-top: 60px !important;
+  }
+
+@media (max-width: 768px) {
+  .content-wrapper {
+    min-height: calc(100vh - 60px);
+  }
+  
+  .custom-navbar {
+    height: 70px; /* Slightly smaller for mobile */
+    padding: 0.5rem 1rem;
+  }
+  
+  /* Remove the old homeWrapper padding since content-wrapper handles it */
+  .homeWrapper {
+    padding-top: 0 !important;
+  }
+}

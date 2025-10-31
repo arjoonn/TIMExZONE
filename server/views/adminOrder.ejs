@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+     <h1>Pending Orders</h1>
+
+  <% if (order && order.length > 0) { %>
+    <table border="1">
+      <thead>
+        <tr>
+          <th>User Email</th>
+          <th>Product Title</th>
+          <th>Price</th>
+          <th>Address</th>
+          <th>Status</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% order.forEach(o => { %>
+          <tr>
+            <td><%= o.user?.email || "N/A" %></td>
+            <td><%= o.product?.title || "N/A" %></td>
+            <td>₹<%= o.product?.price || 0 %></td>
+            <td><%= o.address %></td>
+            <td><%= o.status %></td>
+            <td>
+              <form action="/admin/admin/order/<%= o._id %>/confirm" method="post">
+                <button type="submit" class="confirm-btn">Confirm</button>
+              </form>
+              <form action="/admin/admin/order/<%= o._id %>/reject" method="post">
+                <button type="submit" class="reject-btn">Reject</button>
+              </form>
+            </td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  <% } else { %>
+    <p style="text-align:center;">No pending orders right now.</p>
+  <% } %>
+</body>
+</html>

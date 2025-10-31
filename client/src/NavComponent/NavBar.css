@@ -1,0 +1,230 @@
+/* Navbar Container */
+.Navbar {
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 1rem 0;
+  position: relative;
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  position: relative;
+}
+
+/* Left Side - Brand */
+.nav-left {
+  flex: 1;
+}
+
+.brand {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+  text-decoration: none;
+}
+
+/* Menu Toggle Button - Hidden by default */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  z-index: 1001;
+}
+
+/* Center - Navigation Links (Web View) */
+.navbar-center {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  flex: 1;
+  justify-content: center;
+}
+
+.navbar-center a {
+  color: #333;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem;
+}
+
+
+.navbar-center i {
+  font-size: 1.2rem;
+  color: #bbb;
+  margin: 0 12px;
+  transition: color 0.3s ease;
+}
+
+.navbar-center i.active{
+  color: #d25353;
+}
+
+.navbar-center span {
+  display: inline;
+}
+
+/* Right Side */
+.navbar-right {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+/* Dropdown Styles */
+.dropdown {
+  position: relative;
+}
+
+.dropdown-btn {
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background: white;
+  margin: 0;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.dropdown-btn:hover {
+  background-color: #f8f9fa;
+}
+
+.dropdown-content {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  min-width: 140px;
+  z-index: 1000;
+}
+
+.dropdown-content button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: none;
+  background: none;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.dropdown-content button:hover {
+  background-color: #f8f9fa;
+}
+
+/* Mobile View */
+@media (max-width: 768px) {
+  .navbar-container {
+    padding: 2px 15px;
+    position: relative;
+    width:80%;
+  }
+
+  /* Show menu toggle button on mobile */
+  .menu-toggle {
+    display: block;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 95%;
+  }
+
+  /* Hide center navigation in mobile by default */
+  .navbar-center {
+    display: none;
+  }
+
+  /* Show center navigation when menu is active */
+  .navbar-center.active {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    gap: 1rem;
+    z-index: 1000;
+    margin-top: 0;
+  }
+
+  /* Hide dropdown in navbar-right on mobile */
+  .navbar-right .dropdown {
+    display: none;
+  }
+
+  /* Show dropdown when menu is active */
+  .navbar-center.active ~ .navbar-right .dropdown {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    position: absolute;
+    top: calc(100% + 200px); /* Adjust based on content height */
+    left: 0;
+    right: 0;
+    background: white;
+    padding: 1.5rem;
+    z-index: 1000;
+    border-top: 1px solid #eee;
+  }
+
+  .navbar-center.active ~ .navbar-right .dropdown-btn {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+    border: none;
+    border-bottom: 1px solid #eee;
+    border-radius: 0;
+    padding: 1rem;
+    background: transparent;
+  }
+
+  .navbar-center.active ~ .navbar-right .dropdown-content {
+    position: static;
+    box-shadow: none;
+    border: none;
+    width: 100%;
+  }
+
+  .navbar-center.active ~ .navbar-right .dropdown-content button {
+    justify-content: center;
+    padding: 0.75rem;
+  }
+
+  /* Ensure text is visible in mobile */
+  .navbar-center a span,
+  .dropdown-btn span {
+    display: inline !important;
+  }
+
+  /* Adjust brand size for mobile */
+  .brand {
+    font-size: 1.3rem;
+  }
+}
+
