@@ -19,12 +19,13 @@ const { checkForAuthenticationCookie } = require("./middleware/authentication");
 app.use(
   cors({
     origin:[
-      "timexzone.vercel.app",
+      "https://timexzone.vercel.app",
        process.env.CLIENT_URI
     ],
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
-    allowedHeaders: ["Content-Type", "Authorization"]
+    allowedHeaders: ["Content-Type", "Authorization"],
+    optionsSuccessStatus: 200,
   })
 );
 
