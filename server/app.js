@@ -18,7 +18,7 @@ const { checkForAuthenticationCookie } = require("./middleware/authentication");
 
 app.use(
   cors({
-    origin:["https://timexzone-client.onrender.com",
+    origin:["https://timexzone.onrender.com",
       process.env.CLIENT_URI
     ],
     methods: ["GET", "POST", "PUT", "DELETE"],
@@ -45,10 +45,6 @@ app.set('views', path.join(__dirname, "views"))
 app.get("/test", (req, res) => {
   res.render("test", { name: "Arjun" });
 });
-
-console.log("✅ SMTP_HOST:", process.env.SMTP_HOST);
-console.log("✅ SMTP_USER:", process.env.SMTP_USER);
-console.log("✅ SMTP_PORT:", process.env.SMTP_PORT);
 
 app.use("/user", userRouter);
 app.use("/product", productRouter);
