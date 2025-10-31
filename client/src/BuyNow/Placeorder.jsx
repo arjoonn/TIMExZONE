@@ -26,7 +26,7 @@ function Placeorder() {
     }
     
     try {
-      const res = await fetch("https://timexzone-server.onrender.com/pay/placeorder", {
+      const res = await fetch("https://timexzone.onrender.com/pay/placeorder", {
         method: "post",
         credentials: "include",
         headers: {
