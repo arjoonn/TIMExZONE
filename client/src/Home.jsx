@@ -31,8 +31,8 @@ function Home() {
         },
       });
       const body = await res.json();
-      setWatch(body.products);
-      setAllProducts(body.products);
+      setWatch(body.products || body);
+      setAllProducts(body.products || body);
     } catch (error) {
       console.log("unable to fetch products", error);
     }
