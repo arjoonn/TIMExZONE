@@ -11,7 +11,7 @@ function WishButton({ productId,onAlert }) {
   const handleAddToWishlist = async () => {
     try {
       const res = await fetch(
-        `http://localhost:9000/wishlist/add/${productId}`,
+        `https://timexzone-server.onrender.com/wishlist/add/${productId}`,
         {
           credentials: "include",
           method: "POST",

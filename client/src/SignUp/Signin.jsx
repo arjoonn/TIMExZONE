@@ -28,7 +28,7 @@ function Signin() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch("http://localhost:9000/user/signin", {
+      const res = await fetch("https://timexzone-server.onrender.com/user/signin", {
         method: "post",
         credentials: "include",
         headers: {
