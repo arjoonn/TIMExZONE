@@ -21,21 +21,24 @@ router.post('/signup',async(req,res)=>{
 //otp based verification
 router.post('/signin',async(req,res)=>{
     const {email,password} = req.body;
+    console.log("user email",email)
     try{
         //validating email and password
+        console.log("🔍 Validating user...");
         await User.matchPasswordGenToken(email,password)
 
         //otp generation
         const otp = Math.floor(100000+Math.random()*900000).toString()
         otpStore[email] = otp;
         setTimeout(()=>delete otpStore[email],5 * 60 * 1000)
+        console.log("✉️ Sending OTP to:", email);
         await sendMail(
             email,
             'Your otp is:',
             `${otp}`
         );
+        console.log("OTP SEND");
         res.status(200).json({message:'OTP send successfully'})
-
     }catch(error){
         console.log('signin error',error.message); 
         res.status(401).json({message:error.message}) 
