@@ -43,10 +43,6 @@ mongoose
 app.set('view engine',"ejs")
 app.set('views', path.join(__dirname, "views"))
 
-app.get("/test", (req, res) => {
-  res.render("test", { name: "Arjun" });
-});
-
 app.use("/user", userRouter);
 app.use("/product", productRouter);
 app.use("/cart", cartRouter);
