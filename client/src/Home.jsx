@@ -16,15 +16,15 @@ function Home() {
   const [alertMessage, setAlertMessage] = useState("");
   const [alertColor, setAlertColor] = useState("success");
   const images = [
-    "https://timexzone.onrender.com/pimages/add.jpg",
-    "https://timexzone.onrender.com/pimages/Addfs.webp",
+    "https://timexzone-server.onrender.com/pimages/add.jpg",
+    "https://timexzone-server.onrender.com/pimages/Addfs.webp",
   ]
   const [currentIndex, setCurrectIndex] = useState(0)
 
 
   const fetchProducts = async () => {
     try {
-      const res = await fetch("https://timexzone.onrender.com/product/products", {
+      const res = await fetch("https://timexzone-server.onrender.com/product/products", {
         method: "get",
         headers: {
           "Content-Type": "application/json",
@@ -80,7 +80,7 @@ function Home() {
                   <Card style={{ width: "18rem" }} className="productCard">
                     <Card.Img
                       variant="top"
-                      src={`https://timexzone.onrender.com/${item.productImage[0]}`}
+                      src={`https://timexzone-server.onrender.com/${item.productImage[0]}`}
                       className="productImage"
                     />
                     <div className="cardInfoWrapper">

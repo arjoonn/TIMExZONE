@@ -7,7 +7,7 @@ function Mycart({ OnAlert,productId }) {
 
   const handleMycart = async () => {
     try {
-        const res = await fetch(`https://timexzone.onrender.com/cart/mycart/${productId}`,{
+        const res = await fetch(`https://timexzone-server.onrender.com/cart/mycart/${productId}`,{
             method:'post',
             credentials:'include',
             headers:{

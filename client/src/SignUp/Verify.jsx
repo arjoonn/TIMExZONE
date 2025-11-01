@@ -19,7 +19,7 @@ function Verify({ setUser }) {
     const email = localStorage.getItem("userEmail");
 
     try {
-      const res = await fetch("https://timexzone.onrender.com/user/verify", {
+      const res = await fetch("https://timexzone-server.onrender.com/user/verify", {
         method: "post",
         credentials: "include",
         headers: {

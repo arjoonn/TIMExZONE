@@ -8,7 +8,7 @@ function Buynow({ selectedItems }) {
 
   const handleBuy = async () => {
     try {
-      const res = await fetch("https://timexzone.onrender.com/cart/buynow", {
+      const res = await fetch("https://timexzone-server.onrender.com/cart/buynow", {
         credentials: "include",
         method: "post",
         headers: {

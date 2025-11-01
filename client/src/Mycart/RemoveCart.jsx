@@ -6,7 +6,7 @@ function RemoveCart({ productId,onAlert,isCarted }) {
   const [rmcart, SetRmCart] = useState();
   const handleRemoveFromCart = async () => {
     const res = await fetch(
-      `https://timexzone.onrender.com/cart/removefrm/${productId}`,
+      `https://timexzone-server.onrender.com/cart/removefrm/${productId}`,
       {
         method: "post",
         credentials: "include",
