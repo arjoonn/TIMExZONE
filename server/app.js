@@ -16,19 +16,18 @@ const payRouter = require("./routes/payment");
 const adminRouter = require("./routes/admin");
 const { checkForAuthenticationCookie } = require("./middleware/authentication");
 
-app.use(
-  cors({
-    origin:[process.env.CLIENT_URI,"https://tim-ex-zone.vercel.app"],
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    credentials: true,
-    allowedHeaders: ["Content-Type", "Authorization"],
-  })
-);
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(checkForAuthenticationCookie("token"));
+
+app.use(
+  cors({
+    origin:[process.env.CLIENT_URI,"https://tim-ex-zone.vercel.app"],
+    credentials: true,
+  })
+);
 
 mongoose
   .connect(process.env.MONGO_URI)
