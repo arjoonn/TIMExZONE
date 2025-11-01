@@ -1,0 +1,7 @@
+{
+  "build": {
+    "builder": "Nixpacks",
+    "buildCommand": "cd server && npm install",
+    "startCommand": "cd server && npm start"
+  }
+}
