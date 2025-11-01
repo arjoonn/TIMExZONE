@@ -35,7 +35,7 @@ router.post('/signin',async(req,res)=>{
         await sendMail(
             email,
             'Your otp is:',
-            `${otp}`
+            otp
         );
         console.log("OTP SEND");
         res.status(200).json({message:'OTP send successfully'})
