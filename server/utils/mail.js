@@ -16,7 +16,8 @@ const sendMail = async(to,subject,otp)=>{
     },{
      headers:{
         'Content-Type':'application/json',
-        'api-key' : process.env.API_KEY
+        'api-key' : process.env.API_KEY,
+        withCredentials : true
       },
   });
 
