@@ -40,8 +40,7 @@ function Signin() {
         const body = await res.json()
         handleAlert(body.message,"info")
         localStorage.setItem("userEmail", formData.email);
-        navigate("/verify")
-        setTimeout(() => {handleAlert("")}, 500);
+        setTimeout(() => {handleAlert(""), navigate("/verify")}, 500);
       } else {
         handleAlert("invalid credentials ❌","danger");
         setTimeout(() => handleAlert(""), 500);
