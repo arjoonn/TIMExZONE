@@ -57,7 +57,7 @@ router.post('/buynow',checkForAuthenticationCookie('token'),async(req,res)=>{
 router.post('/mycart/:id',checkForAuthenticationCookie('token'),async(req,res)=>{
     try {
          if(!req.user) {
-            return res.status(404).json({message:'login required'})
+            return res.status(401).json({message:'login required'})
          }
         
         const user = await User.findById(req.user._id)

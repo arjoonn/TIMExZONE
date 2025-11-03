@@ -4,7 +4,7 @@ const router = express.Router();
 const {checkForAuthenticationCookie} = require('../middleware/authentication')
 
 
-router.post("/add/:id",checkForAuthenticationCookie('token'),async (req,res) => {
+router.post("/add/:id",checkForAuthenticationCookie('token'),async(req,res) => {
    try {
        if (!req.user) {
           return res.status(401).json({ message: "Login required" });
@@ -28,7 +28,7 @@ router.post("/add/:id",checkForAuthenticationCookie('token'),async (req,res) => 
         wishlist: user.wishlist,
       });
     } catch (error) {
-      console.log("server error", error);
+      console.log("server failed...", error);
     }
   }
 );

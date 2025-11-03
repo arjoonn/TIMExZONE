@@ -12,7 +12,7 @@ function NavBar({ user, setUser }) {
   const isActive = (p) => location.pathname === p;
 
   const handleLogout = async () => {
-    const res = await fetch('https://timexzone-server.onrender.com/user/logout', {
+    const res = await fetch('http://localhost:9000/user/logout', {
       credentials: 'include',
       method: 'get',
       headers: {

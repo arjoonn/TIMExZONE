@@ -10,7 +10,7 @@ const sendMail = async(to,subject,otp)=>{
       to:[{email:to}],
       subject:subject,
       htmlContent:`<div style="font-family:Arial,sans-serif;">
-                        <h2>🔐 Your OTP is: ${otp}</h2>
+                        <h2>Your OTP is: ${otp}</h2>
                         <p>This OTP is valid for 5 minutes.</p>
                       </div>`,
     },{

@@ -14,7 +14,7 @@ function Cart() {
 
   const handleViewCart = async () => {
     try {
-      const res = await fetch("https://timexzone-server.onrender.com/cart/viewmycart", {
+      const res = await fetch("http://localhost:9000/cart/viewmycart", {
         credentials: "include",
         method: "get",
         headers: {
@@ -61,7 +61,7 @@ function Cart() {
   }, []);
 
   const handleQuantityUpdate = async (productId, Qnty) => {
-    const res = await fetch(`https://timexzone-server.onrender.com/cart/mycart/${productId}`, {
+    const res = await fetch(`http://localhost:9000/cart/mycart/${productId}`, {
       method: "put",
       credentials: "include",
       headers: {
@@ -102,7 +102,7 @@ function Cart() {
                           {item.productImage?.map((img, i) => (
                             <img
                               key={i}
-                              src={`https://timexzone-server.onrender.com/${img}`}
+                              src={`http://localhost:9000/${img}`}
                               alt={item.title}
                               width="120"
                             />

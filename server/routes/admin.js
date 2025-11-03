@@ -6,9 +6,20 @@ router.get('/admin/order',async(req,res)=>{
     try {
         const order = await Order.find({status:'PENDING'})
             .populate('user','email')
-            .populate('products.productId','price title')
+            .populate('products.productId')
+            .lean()
+            
+        const updatedOrder =order.map((item)=>{
+            const updatedProducts = item.products.map((p)=>{
+                const price = p.productId?.price;
+                const qty = p.quantity;
+                const totalPrice = price*qty
+                return{...p,totalPrice}
+            })
+            return{...item,products:updatedProducts}
+        })
 
-        res.render('adminOrder',{order})
+        res.render('adminOrder',{order:updatedOrder})
     } catch (error) {
         console.log('something went wrong',error);
     }

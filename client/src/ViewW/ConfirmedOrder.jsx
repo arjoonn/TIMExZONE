@@ -6,7 +6,7 @@ import '../ViewW/ConfirmedOrder.css'
 function ConfirmedOrder() {
   const [confirm, setConfirm] = useState([]);
   const handleConfirmOrders = async () => {
-    const res = await fetch("https://timexzone-server.onrender.com/pay/confirmedorder", {
+    const res = await fetch("http://localhost:9000/pay/confirmedorder", {
       method: "get",
       credentials: "include",
       headers: {
@@ -30,7 +30,7 @@ function ConfirmedOrder() {
             <div className="order-card" key={index}>
               <div key={index} className="order-image">
              {item.products?.[0]?.productId.productImage?.[0] &&(
-              <img src={`https://timexzone-server.onrender.com/${item.products[0].productId.productImage[0]}`}
+              <img src={`http://localhost:9000/${item.products[0].productId.productImage[0]}`}
               alt={item.title}
               style={{ width: "100px", height: "100px", objectFit: "cover" }}
               />

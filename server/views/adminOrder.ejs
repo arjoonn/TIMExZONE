@@ -24,8 +24,10 @@
         <% order.forEach(o => { %>
           <tr>
             <td><%= o.user?.email || "N/A" %></td>
-            <td><%= o.product?.title || "N/A" %></td>
-            <td>₹<%= o.product?.price || 0 %></td>
+            <% o.products.forEach(p=>{ %>
+            <td><%= p.productId?.title || "N/A" %></td>
+            <td>₹<%= p.totalPrice || 0 %></td>
+            <% }) %>
             <td><%= o.address %></td>
             <td><%= o.status %></td>
             <td>

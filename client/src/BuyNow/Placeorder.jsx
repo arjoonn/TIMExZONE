@@ -26,7 +26,7 @@ function Placeorder() {
     }
     
     try {
-      const res = await fetch("https://timexzone-server.onrender.com/pay/placeorder", {
+      const res = await fetch("http://localhost:9000/pay/placeorder", {
         method: "post",
         credentials: "include",
         headers: {
@@ -72,7 +72,7 @@ function Placeorder() {
 
   const verifyPayment = async (paymentResponse) => {
     try {
-      const res = await fetch("https://timexzone-server.onrender.com/pay/verifypayment", {
+      const res = await fetch("http://localhost:9000/pay/verifypayment", {
         method: "post",
         credentials: "include",
         headers: {
@@ -104,7 +104,7 @@ function Placeorder() {
             <div className="order-item" key={index}>
               <div>
                 <img
-                  src={`https://timexzone-server.onrender.com/${item.productImage[0]}`}
+                  src={`http://localhost:9000/${item.productImage[0]}`}
                   alt={order.title}
                   className="order-img"
                 />

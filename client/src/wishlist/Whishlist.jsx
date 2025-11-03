@@ -13,7 +13,7 @@ function Whishlist() {
   const [isWishlisted, setIsWishlisted] = useState(true);
 
   const handleViewWishlist = async () => {
-    const res = await fetch("https://timexzone-server.onrender.com/wishlist/viewwishlist", {
+    const res = await fetch("http://localhost:9000/wishlist/viewwishlist", {
       method: "get",
       credentials: "include",
       headers: {
@@ -53,7 +53,7 @@ function Whishlist() {
               <div key={index} className="wishCard">
                 <div className="imageContainer">
                   <img
-                    src={`https://timexzone-server.onrender.com/${item.productImage[0]}`}
+                    src={`http://localhost:9000/${item.productImage[0]}`}
                     className="wishImage"
                     alt={item.title}
                   />

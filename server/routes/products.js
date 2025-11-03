@@ -3,8 +3,13 @@ const Product = require('../model/products')
 const router = express.Router()
 
 router.get('/products',async(req,res)=>{
-    const allProducts = await Product.find({})
-    return res.status(200).json({products:allProducts})
+    try {
+        const allProducts = await Product.find({})
+        return res.status(200).json({products:allProducts})
+    } catch (error) {
+        console.log('failed to fetch products:',error);
+        
+    }
 })
 
 

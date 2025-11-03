@@ -1,7 +1,7 @@
 require('dotenv').config()
 const cors = require("cors");
 const express = require("express");
-const PORT = process.env.PORT || 8000;
+const PORT = process.env.PORT || 9000;
 const path = require("path");
 const app = express();
 const mongoose = require("mongoose");
@@ -16,18 +16,16 @@ const payRouter = require("./routes/payment");
 const adminRouter = require("./routes/admin");
 const { checkForAuthenticationCookie } = require("./middleware/authentication");
 
-
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-
-
 app.use(
   cors({
-    origin:[process.env.CLIENT_URI,"https://tim-ex-zone.vercel.app"],
+    origin:process.env.CLIENT_URI,
+    methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   })
 );
 
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(checkForAuthenticationCookie("token"));
 
@@ -48,7 +46,7 @@ app.use("/product", productRouter);
 app.use("/cart", cartRouter);
 app.use("/pay", payRouter);
 app.use("/admin", adminRouter);
-app.use("/wishlist", checkForAuthenticationCookie('token'),wishRouter);
+app.use("/wishlist",wishRouter);
 app.use("/pimages", express.static(path.join(__dirname, "pimages")));
 
 
