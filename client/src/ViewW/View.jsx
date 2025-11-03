@@ -16,7 +16,7 @@ function View() {
 
   const fetchProducts = async () => {
     try {
-      const res = await fetch(`http://localhost:9000/product/products/${id}`, {
+      const res = await fetch(`https://timexzone-server.onrender.com/product/products/${id}`, {
         credentials: "include",
         method: "GET",
         headers: {
@@ -55,7 +55,7 @@ function View() {
               {watch.productImage?.map((img, index) => (
                 <img
                   key={index}
-                  src={`http://localhost:9000/${img}`}
+                  src={`https://timexzone-server.onrender.com/${img}`}
                   alt={`thumb-${index}`}
                   className={`thumbnail ${
                     currentImg === index ? "active" : ""
@@ -67,7 +67,7 @@ function View() {
             <div className="mainImageWrapper">
               {watch.productImage.length > 0 && (
                 <img
-                  src={`http://localhost:9000/${watch.productImage[currentImg]}`}
+                  src={`https://timexzone-server.onrender.com/${watch.productImage[currentImg]}`}
                   alt={watch.title}
                   className="mainImage"
                 />
@@ -87,7 +87,7 @@ function View() {
                 className="serviceItem"
               >
                 <img
-                  src={`http://localhost:9000/${service.icon}`}
+                  src={`https://timexzone-server.onrender.com/${service.icon}`}
                   alt={service.type}
                   width={20}
                   height={20}

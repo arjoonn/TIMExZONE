@@ -24,7 +24,7 @@ function Signup() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch("http://localhost:9000/user/signup", {
+      const res = await fetch("https://timexzone-server.onrender.com/user/signup", {
         method: "post",
         headers: {
           "Content-Type": "application/json",

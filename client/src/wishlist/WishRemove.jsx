@@ -6,7 +6,7 @@ function WishRemove({ productId,OnAlert,isWishlisted }) {
 
   const handleRemove = async () => {
     const res = await fetch(
-      `http://localhost:9000/wishlist/removefrm/${productId}`,
+      `https://timexzone-server.onrender.com/wishlist/removefrm/${productId}`,
       {
         method: "post",
         credentials: "include",
