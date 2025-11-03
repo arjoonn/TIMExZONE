@@ -57,8 +57,8 @@ router.post('/verify',async(req,res)=>{
 
     res.status(200).cookie('token',token,{
         httpOnly:true,
-        secure:false,
-        sameSite: 'lax'
+        secure:true,
+        sameSite: 'none'
     }).json({message:'login successfull',user,token})
     
 })
