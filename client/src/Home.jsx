@@ -39,8 +39,8 @@ function Home({ searchQuery }) {
   };
 
   const handleMobileView = (_id) => {
-    if (window.innerWidth <= 768) {
-      navigate(`/products/${item._id}`)
+    if (window.innerWidth<=768) {
+      navigate(`/products/${_id}`)
     }
   }
 
