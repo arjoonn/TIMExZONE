@@ -248,18 +248,32 @@
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
+    align-items: flex-start;
   }
 
   .genderFilter,
   .brandFilter,
   .priceFilter {
-    flex: 1 1 30%; /* two filters per row */
+    flex: 1 1 30%;
     margin-bottom: 0.5rem;
-    font-size: 12px;
     padding: 10px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    transition: all 0.2s ease-in-out;
+    align-self: flex-start;
   }
 
-  
+  .filterContent {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+
+  .filterContent.open {
+    max-height: 200px; /* or however tall your content is */
+  }
+
   /* Product grid for 2 per row */
   .productContainer {
     grid-template-columns: repeat(2, 1fr);
