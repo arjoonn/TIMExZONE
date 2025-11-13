@@ -51,7 +51,7 @@
 .brandFilter {
   border: 1px solid #ddd;
   border-radius: 6px;
-  padding: 12px;
+  padding: 12px; 
   margin-bottom: 12px;
   background: #fff;
   transition: all 0.2s ease-in-out;
@@ -207,6 +207,23 @@
   box-shadow: 0 2px 6px rgba(0,0,0,0.15);
 }
 
+.no-items {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 60vh;   /* instead of 100vh */
+  width: 100%;
+  color: #000;
+  text-align: center;
+  background-color: #f9f9f9;  
+}
+
+.no-items h1{
+  font-size: 2rem;
+  font-weight: bold;
+  opacity: 0.3;  
+}
+
 @media (max-width: 768px) {
   
   .custom-navbar {
@@ -234,12 +251,14 @@
   }
 
   .genderFilter,
-  .brandFilter {
-    flex: 1 1 45%; /* two filters per row */
+  .brandFilter,
+  .priceFilter {
+    flex: 1 1 30%; /* two filters per row */
     margin-bottom: 0.5rem;
     font-size: 12px;
     padding: 10px;
   }
+
   
   /* Product grid for 2 per row */
   .productContainer {
@@ -258,6 +277,24 @@
     height: auto;
   }
 
+  .productCard {
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .productCard:hover {
+    transform: none !important;
+  }
+
+  /* Keep layout stable when tapping wish button */
+  .productCard:hover .cardInfo {
+    display: flex !important;
+  }
+
+  .productCard:hover .viewBtn {
+    display: none !important;
+  }
+
   .homeTitle {
     display: -webkit-box;  
     font-size: 1rem;
@@ -272,7 +309,7 @@
   }
 
   .viewBtn {
-    font-size: 0.9rem;
-    padding: 8px 0;
+    display: none !important;
   }
 }
+

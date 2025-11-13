@@ -122,13 +122,12 @@
 
 /* Mobile Styles */
 @media (max-width: 768px) {
-  
-  .wishContainer {
+ .wishContainer {
     grid-template-columns: repeat(2, 1fr);
     gap: 12px;
     padding: 12px;
-    margin-top: 0px;
-    min-height: calc(100vh - 60px);
+    margin-top: 0;
+    min-height: auto ;
   }
 
   .wishCard {

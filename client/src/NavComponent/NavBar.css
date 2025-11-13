@@ -42,10 +42,11 @@
 /* Center - Navigation Links (Web View) */
 .navbar-center {
   display: flex;
-  gap: 2rem;
+  gap: 1rem;
   align-items: center;
-  flex: 1;
+  flex: 1 1 auto;
   justify-content: center;
+  min-width: 0;
 }
 
 .navbar-center a {
@@ -81,6 +82,7 @@
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  flex-shrink: 0;
 }
 
 /* Dropdown Styles */
@@ -100,6 +102,8 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .dropdown-btn:hover {
@@ -133,7 +137,7 @@
 
 .dropdown-content button:hover {
   background-color: #f8f9fa;
-}
+} 
 
 /* Mobile View */
 @media (max-width: 768px) {
@@ -155,6 +159,10 @@
   /* Hide center navigation in mobile by default */
   .navbar-center {
     display: none;
+  }
+
+  .dropdown-content{
+    padding-top: 2px;
   }
 
   /* Show center navigation when menu is active */
@@ -191,6 +199,7 @@
     padding: 1.5rem;
     z-index: 1000;
     border-top: 1px solid #eee;
+    margin-top: 40px;
   }
 
   .navbar-center.active ~ .navbar-right .dropdown-btn {

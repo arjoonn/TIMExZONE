@@ -1,0 +1,40 @@
+.search-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+/* Search icon */
+.search-icon {
+  font-size: 1rem;
+  color: #333;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+/* The hidden input initially */
+.searchBar {
+  margin-left: 10px;
+  overflow: hidden;
+  transition: width 0.3s ease, opacity 0.3s ease;
+}
+
+.searchBar.closed {
+  width: 0;
+  opacity: 0;
+}
+
+.searchBar.open {
+  width: 150px; /* Adjust based on navbar space */
+  opacity: 1;
+}
+
+.search-input {
+  width: 100%;
+  padding: 5px 8px;
+  font-size: 14px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  outline: none;
+}
+

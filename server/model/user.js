@@ -19,6 +19,12 @@ const userSchema = new Schema({
         type:String,
         required:true
     },
+    otp:{
+        type:String
+    },
+    otpExpire:{
+        type:Date
+    },
     role:{
         type:String,
         enum:["USER","ADMIN"],
@@ -68,8 +74,7 @@ userSchema.static('matchPasswordGenToken',async function(email,password){
     
    if(userProvidedHash!==hashPassword) throw new Error('Incorrect Email or Password')
 
-   const token = createTokenForUser(user) 
-   return token
+   return user;
    
 })
 

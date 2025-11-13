@@ -8,7 +8,7 @@ import WishButton from "./wishlist/WishButton";
 import "./Style/Home.css";
 import Footer from "./Footer";
 
-function Home() {
+function Home({ searchQuery }) {
   const navigate = useNavigate();
   const [watch, setWatch] = useState([]);
   //for filtering
@@ -22,7 +22,7 @@ function Home() {
   const [currentIndex, setCurrectIndex] = useState(0)
 
 
-  const fetchProducts = async() => {
+  const fetchProducts = async () => {
     try {
       const res = await fetch("https://timexzone-server.onrender.com/product/products", {
         method: "get",
@@ -38,6 +38,12 @@ function Home() {
     }
   };
 
+  const handleMobileView = (_id) => {
+    if (window.innerWidth <= 768) {
+      navigate(`/products/${item._id}`)
+    }
+  }
+
   const handleAlert = (message, variant) => {
     setAlertColor(variant);
     setAlertMessage(message);
@@ -46,6 +52,21 @@ function Home() {
     }, 500);
   };
 
+  useEffect(() => {
+    if (!searchQuery) {
+      setWatch(allProducts)
+    } else {
+      const lowerCaseQuery = searchQuery.toLowerCase()
+      const newFiterItems = allProducts.filter((i) =>
+        i.title.toLowerCase().replace(/[-_ ]/g, "").includes(lowerCaseQuery)
+      );
+      if (newFiterItems.length === 0) {
+        setWatch([])
+      } else {
+        setWatch(newFiterItems)
+      }
+    }
+  }, [searchQuery, allProducts])
 
   useEffect(() => {
     fetchProducts();
@@ -65,7 +86,7 @@ function Home() {
           </div>
         )}
         <div className="add-container">
-          <img src={images[currentIndex]}/>
+          <img src={images[currentIndex]} />
         </div>
         <div className="homeContainer">
           <aside className="filterContainer">
@@ -77,7 +98,7 @@ function Home() {
             <Row>
               {watch.map((item, index) => (
                 <Col key={index} xs={6} sm={6} md={4} className="mb-3">
-                  <Card style={{ width: "18rem" }} className="productCard">
+                  <Card style={{ width: "18rem" }} className="productCard" onClick={() => handleMobileView(item._id)}>
                     <Card.Img
                       variant="top"
                       src={`https://timexzone-server.onrender.com/${item.productImage[0]}`}
@@ -95,12 +116,12 @@ function Home() {
                       <Button
                         variant="primary"
                         className="viewBtn"
-                        onClick={() => navigate(`/products/${item._id}`)}
+                        onClick={(e) => { e.stopPropagation(); navigate(`/products/${item._id}`); }}
                       >
                         View
                       </Button>
                     </div>
-                    <div className="wishBtn">
+                    <div className="wishBtn" onClick={(e) => e.stopPropagation()}>
                       <WishButton productId={item._id} onAlert={handleAlert} />
                     </div>
                   </Card>

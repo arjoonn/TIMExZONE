@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import '../NavComponent/NavBar.css'
+import Search from "../Search";
 
-function NavBar({ user, setUser }) {
+function NavBar({ user, setUser,onSearch }) {
   const navigate = useNavigate()
   const [openDropdown, setOpenDropdown] = useState(false);
   const [mobileDropdownOpen, setMobileDropdownOpen] = useState(false);
@@ -64,6 +65,7 @@ function NavBar({ user, setUser }) {
                 </Link>
               </>
             )}
+          <Search onSearch={onSearch} onClick={() => setMenuOpen(false)}/>
           </div>
 
           <div className="navbar-right">

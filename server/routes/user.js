@@ -1,71 +1,83 @@
-const express = require('express')
-const User = require('../model/user')
-const {sendMail} = require('../utils/mail')
-const { createTokenForUser } = require('../services/authentication')
-const router = express.Router()
-const otpStore={}
+const express = require("express");
+const User = require("../model/user");
+const { sendMail } = require("../utils/mail");
+const { createTokenForUser } = require("../services/authentication");
+const router = express.Router();
 
+router.post("/signup", async (req, res) => {
+  const { fullname, email, password } = req.body;
 
-router.post('/signup',async(req,res)=>{
-    const {fullname,email,password} = req.body
-
-    await User.create({
-        fullname,
-        email,
-        password
-    })
-    return res.status(201).json({message:'user registerd successfully'})
-})
-
+  await User.create({
+    fullname,
+    email,
+    password,
+  });
+  return res.status(201).json({ message: "user registerd successfully" });
+});
 
 //otp based verification
-router.post('/signin',async(req,res)=>{
-    const {email,password} = req.body;
-    console.log("user email",email)
-    try{
-        //validating email and password
-        console.log("🔍 Validating user...");
-        await User.matchPasswordGenToken(email,password)
+router.post("/signin", async (req, res) => {
+  const { email, password } = req.body;
+  console.log("user email", email);
+  try {
+    //validating email and password
+    await User.matchPasswordGenToken(email, password);
 
-        //otp generation
-        const otp = Math.floor(100000+Math.random()*900000).toString()
-        otpStore[email] = otp;
-        setTimeout(()=>delete otpStore[email],5 * 60 * 1000)
-        console.log("✉️ Sending OTP to:", email);
-        await sendMail(
-            email,
-            'Your otp is:',
-            otp
-        );
-        console.log("OTP SEND");
-        res.status(200).json({message:'OTP send successfully'})
-    }catch(error){
-        console.log('signin error',error.message); 
-        res.status(401).json({message:error.message}) 
+    //otp generation
+    const otp = Math.floor(100000 + Math.random() * 900000).toString();
+
+    await User.updateOne(
+      { email },
+      {
+        $set: {
+          otp,
+          otpExpire: new Date(Date.now() + 5 * 60 * 1000),
+        },
+      }
+    );
+
+    console.log("✉️ Sending OTP to:", email);
+    await sendMail(email, "Your otp is:", otp);
+    console.log("OTP SEND");
+    res.status(200).json({ message: "OTP send successfully" });
+  } catch (error) {
+    console.log("signin error", error.message);
+    res.status(401).json({ message: error.message });
+  }
+});
+
+router.post("/verify", async (req, res) => {
+  const { email, otp } = req.body;
+
+  try {
+    const user = await User.findOne({ email });
+    if (!user) return res.status(404).json({ message: "user not found" });
+
+    if (!user.otp || user.otp !== otp || user.otpExpire < Date.now()) {
+      return res.status(404).json({ message: "OTP expired" });
     }
-})
 
-router.post('/verify',async(req,res)=>{
-    const {email,otp} = req.body;
-    if(otpStore[email]!==otp) return res.status(401).json({message:'otp expired or incorrect'})
+    user.otp = undefined;
+    user.otpExpire = undefined;
+    await user.save();
 
-    delete otpStore[email]
-    
-    
-    const user = await User.findOne({email}).select('-password')
     const token = createTokenForUser(user);
+    res
+      .status(200)
+      .cookie("token", token, {
+        httpOnly: true,
+        secure: true,
+        sameSite: "none",
+      })
+      .json({ message: `welcome ${user.fullname}`, user, token });
+  } catch (error) {
+    console.log("Something went wrong");
+  }
+});
 
-    res.status(200).cookie('token',token,{
-        httpOnly:true,
-        secure:true,
-        sameSite: 'none'
-    }).json({message:'login successfull',user,token})
-    
-})
+router.get("/logout", (req, res) => {
+  res.clearCookie("token");
+  res.status(200).json({ ok: true });
+});
 
-router.get('/logout',(req,res)=>{
-    res.clearCookie('token')
-    res.status(200).json({ok:true });
-})
-
-module.exports = router
+module.exports = router;
