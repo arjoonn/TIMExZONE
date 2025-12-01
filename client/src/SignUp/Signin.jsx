@@ -84,6 +84,12 @@ function Signin() {
                 onChange={handleChange}
               />
             </Form.Group>
+            <div
+              style={{ textAlign: "right", marginTop: "5px", color: "blue", cursor: "pointer" }}
+              onClick={() => navigate("/forgot-password")}
+            >
+              Forgot Password?
+            </div>
             <button
               type="submit"
               className={`loginBtn ${formData.email && formData.password ? "active" : ""

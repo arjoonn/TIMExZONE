@@ -12,6 +12,7 @@ function Signup() {
     email: "",
     password: "",
   });
+  const emailFormat = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -23,6 +24,13 @@ function Signup() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if(!emailFormat.test(formData.email)){
+      setAlertMessage('Not a valid format!')
+      setTimeout(()=>setAlertMessage(''),500)
+      return;
+    }
+
     try {
       const res = await fetch("https://timexzone-server.onrender.com/user/signup", {
         method: "post",
@@ -32,7 +40,9 @@ function Signup() {
         body: JSON.stringify(formData),
       });
       if (res.ok) {
-        navigate("/signin");
+        localStorage.setItem("userEmail",formData.email)
+        setTimeout(() => { setAlertMessage(""), navigate("/verify") }, 500);
+        return;
       } else {
         setAlertMessage("signup failed!! All feilds required");
         setTimeout(() => setAlertMessage(""), 500);

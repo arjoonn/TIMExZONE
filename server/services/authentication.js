@@ -11,6 +11,14 @@ function createTokenForUser(user){
     return token;
 }
 
+function createTempToken(user,expire){
+    const temp_payload = {
+        _id:user._id.toString()
+    }
+    const token = jwt.sign(temp_payload,secret,{expiresIn:expire})
+    return token;
+}
+
 function validateToken(token){
     const payload = jwt.verify(token,secret)
     return payload
@@ -18,5 +26,6 @@ function validateToken(token){
 
 module.exports =  {
     createTokenForUser,
-    validateToken
+    validateToken,
+    createTempToken
 }
