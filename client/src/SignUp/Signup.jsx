@@ -39,12 +39,16 @@ function Signup() {
         },
         body: JSON.stringify(formData),
       });
+
+      const data = await res.json()
+
       if (res.ok) {
+        setAlertMessage(data.message,"info")
         localStorage.setItem("userEmail",formData.email)
         setTimeout(() => { setAlertMessage(""), navigate("/verify") }, 500);
         return;
       } else {
-        setAlertMessage("signup failed!! All feilds required");
+        setAlertMessage(data.message,"danger");
         setTimeout(() => setAlertMessage(""), 500);
       }
     } catch (error) {
