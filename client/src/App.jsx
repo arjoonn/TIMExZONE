@@ -13,6 +13,8 @@ import View from "./ViewW/View";
 import Placeorder from "./BuyNow/Placeorder";
 import ConfirmedOrder from "./ViewW/ConfirmedOrder";
 import Footer from "./Footer";
+import ForgotPass from "./SignUp/ForgotPass";
+import ResetPass from "./SignUp/ResetPass";
 
 function App() {
   //user is for dropdown in navbar
@@ -36,6 +38,8 @@ function App() {
             <Route path="/" element={<Home searchQuery={searchQuery}/>} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/signin" element={<Signin />} />
+            <Route path="/forgot-password" element={<ForgotPass/>} />
+            <Route path="/reset-pass/:token" element={<ResetPass/>} />
             <Route
               path="/verify"
               element={<Verify user={user} setUser={setUser} />}
