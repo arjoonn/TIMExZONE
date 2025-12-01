@@ -30,7 +30,7 @@ function ResetPass() {
 
             if (res.ok) {
                 handleAlert(data.message, 'info')
-                setTimeout(() => handleAlert(''), 500)
+                setTimeout(() =>{ handleAlert(''),navigate('/signin') },500)
             } else {
                 handleAlert(data.message, 'dager')
                 setTimeout(() => handleAlert(''), 500)
