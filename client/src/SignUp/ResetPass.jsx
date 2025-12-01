@@ -24,15 +24,15 @@ function ResetPass() {
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ token, password: newPassword })
+                body: JSON.stringify({ token,newPassword:password })
             })
-            const body = await res.json()
+            const data = await res.json()
 
             if (res.ok) {
                 handleAlert(data.message, 'info')
                 setTimeout(() =>{ handleAlert(''),navigate('/signin') },500)
             } else {
-                handleAlert(data.message, 'dager')
+                handleAlert(data.message, 'danger')
                 setTimeout(() => handleAlert(''), 500)
             }
         } catch (error) {
