@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState } from 'react'
-import { data, useNavigate, useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
+import { Form,Alert } from 'react-bootstrap'
 
 function ResetPass() {
     const [password, setPassword] = useState('')

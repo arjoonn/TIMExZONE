@@ -105,7 +105,7 @@ router.post('/forgot-password',async(req,res)=>{
     if(!user) return res.status(400).json({message:'User not found'})
     const token = createTokenForUser(user,'10m')
 
-    const resetLink = `http://localhost:5173/reset-pass/${token}`;
+    const resetLink = `https://tim-ex-zone.vercel.app/reset-pass/${token}`;
     
     await sendMail(
       user.email,
@@ -118,7 +118,7 @@ router.post('/forgot-password',async(req,res)=>{
   }
 })
 
-router.post('reset-pass',async(req,res)=>{
+router.post('/reset-pass',async(req,res)=>{
   try {
     const { token,newPassword } = req.body;
 

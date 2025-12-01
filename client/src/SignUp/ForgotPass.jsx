@@ -7,7 +7,8 @@ function ForgotPass() {
     const [alertMessage, setAlertMessage] = useState('')
     const [alertColor, setAlertColor] = useState('info')
 
-    const handleForgotPassword = async () => {
+    const handleForgotPassword = async (e) => {
+        e.preventDefault()
         const res = await fetch("https://timexzone-server.onrender.com/user/forgot-password", {
             credentials: 'include',
             method: 'post',
