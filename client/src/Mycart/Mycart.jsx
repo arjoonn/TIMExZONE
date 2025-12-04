@@ -8,6 +8,7 @@ function Mycart({ OnAlert, productId }) {
     const [cartItem, setCartItem] = useState([])
     const navigate = useNavigate()
     const [addedToCart, setAddedToCart] = useState(false)
+    
 
     useEffect(() => {
         const handleCartCheck = async () => {
@@ -26,6 +27,10 @@ function Mycart({ OnAlert, productId }) {
     }, [productId])
 
     const handleMycart = async () => {
+        if(addedToCart){
+            navigate('/viewmycart')
+            return;
+        }
         try {
             const res = await fetch(`https://timexzone-server.onrender.com/cart/mycart/${productId}`, {
                 method: 'post',
