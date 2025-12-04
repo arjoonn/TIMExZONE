@@ -45,7 +45,8 @@ function Mycart({ OnAlert, productId }) {
             if (data.message == 'product already in cart') {
                 OnAlert(data.message, 'danger')
             } else {
-                setCartItem(data.cart || [])
+                setCartItem(data.cart || []) 
+                setAddedToCart(true)
                 OnAlert('product added to your cart', 'success')
             }
         } catch (error) {
