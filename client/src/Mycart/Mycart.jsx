@@ -1,4 +1,5 @@
 import React from "react";
+import { useEffect } from "react";
 import { useState } from "react";
 import { Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
@@ -6,6 +7,23 @@ import { useNavigate } from "react-router-dom";
 function Mycart({ OnAlert, productId }) {
     const [cartItem, setCartItem] = useState([])
     const navigate = useNavigate()
+    const [addedToCart, setAddedToCart] = useState(false)
+
+    useEffect(() => {
+        const handleCartCheck = async () => {
+            const res = await fetch('https://timexzone-server.onrender.com/cart/viewmycart', {
+                method: 'get',
+                credentials: 'include',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            const data = await res.json()
+            const cartCheck = data.some(item => item.productId === productId)
+            setAddedToCart(cartCheck)
+        }
+        handleCartCheck()
+    }, [productId])
 
     const handleMycart = async () => {
         try {
@@ -37,7 +55,7 @@ function Mycart({ OnAlert, productId }) {
     return (
         <>
             <div style={{ display: "flex", justifyContent: "center", padding: "12px" }}>
-                <Button type="button" variant="light" onClick={handleMycart} style={{}}>Add to Cart</Button>
+                <Button type="button" variant="light" onClick={handleMycart} style={{}}>{addedToCart ? "Go to Cart" : "Add to Cart"}</Button>
             </div>
         </>
     );
